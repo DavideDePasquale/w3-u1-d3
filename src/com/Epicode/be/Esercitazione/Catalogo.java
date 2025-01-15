@@ -43,11 +43,17 @@ public class Catalogo {
         Customer cliente4 = new Customer(923631L, "Filippo Pappappero", 2);
         Customer cliente5 = new Customer(5889204L, "Maria Manodalcielo", 1);
 
+        List<Customer> listaClienti = Arrays.asList(cliente,cliente1,cliente2,cliente3,cliente4,cliente5);
+
+
 
         Order ordine1 = new Order(3564L, "In Spedizione", "10-10-2024", "15-10-2024", prodottiAcqOrd1 , cliente1);
         Order ordine2 = new Order(4567L,"Consegnato", "10-02-2021","21-02-2021",prodottiAcqOrd2, cliente3);
         Order ordine3 = new Order(3453L,"Consegnato", "25-02-2021","27-02-2021", prodottiAcqOrd3 , cliente4);
         Order ordine4 = new Order(3211L, "Consegnato", "25-03-2024", "29-03-2024", prodottiAcqOrd4 , cliente);
+        List<Order> listaOrdini = Arrays.asList(ordine1,ordine2,ordine3,ordine4);
+
+
 
         System.out.println(prodotto11);
         System.out.println(ordine1);
@@ -60,9 +66,26 @@ public class Catalogo {
         Stream<Product> strBaby = listaProdotti.stream().filter(ele -> ele.category.equals("Baby"));
         strBaby.forEach(ele -> System.out.println("Gli elementi che appartengono alla categoria baby sono : " + ele.name));
 
+        Stream<Order> strOrdBaby = listaOrdini.stream().filter(ele-> ele.products.contains("Baby"));
+        strOrdBaby.forEach(ele -> System.out.println("Gli ordini che hanno prodotti di tipo Baby sono : " + ele.id));
+
+
+
         //Terzo Esercizio
-        Stream<Product> strBoys = listaProdotti.stream().filter(ele ->ele.category.equals("Boys"));
-        strBoys.map(ele-> ele * 100 / 20)
+      listaProdotti.stream().filter(ele-> ele.category.equals("Boys")).forEach(ele-> {
+              double prezzoscont = ele.price * 0.9;
+          System.out.println("Prodotto per ragazzi in sconto : " + ele.name);
+          System.out.println("Il nuovo prezzo scontato è : " + prezzoscont);
+
+      });
+
+
+      //Quarto Esercizio
+
+
+
+
+
 
 
     }
